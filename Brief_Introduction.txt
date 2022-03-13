@@ -1,0 +1,10 @@
+项目的简单介绍：
+这个暑假，主要做了预测房价这个项目。
+
+① 首先，先从贝壳租房上爬取的前50页的租房数据，将数据保存为了Originally_Data.csv。但是因为格式和要求的不太相符，自己又重新做了一遍爬虫，重新爬了一次，重做后的代码为Spider_Gain_Data.py。在Spider_Gain_Data.py中，主要运用了BeautifulSoup框架，期间并未使用正则表达式，是根据分析每一项有用的信息所在的位置和格式提取出的数据，最后将数据保存在了Originally_Data.csv中。
+
+② 将信息爬取下来后，接下来进行数据处理，因为在爬取的时候，忘记了把总楼层和所在楼层分离开，而项目要求要有那样的数据，又将Originally_Data.csv简单的处理了一下，把总楼层和所在楼层分离开，保存为Originally_Data(Floor_Separate).csv。处理的代码在Data_Processing.py中，在编码规则统一后，又将我的所有的编码规矩全保存为Encoding_Rules.csv。在处理过程中，因为我想要多次遍历文件，但是第二次或者第三次或等多的时候，总是遍历失败，在讨论之后得出，文件指针在第一次遍历之后没有重新指向文件头。用seek(0, 0)完美处理了这个问题。所有数据处理完毕后，将处理后的数据保存为After_Processing_Data.csv。
+
+③ 因为要做租房信息相应的数据分析，我画了三个图，第一个为面积的直方图，代码为Histogram(Area).py，图片保存为Histogram(Area).png。第二个图为月租的直方图，代码为Histogram(Price).py，图片保存为Histogram(Price).png。第三个图为横坐标为面积，纵坐标为月租的散点图，代码为ScatterPlot(Area_and_Price).py，图片保存为ScatterPlot(Area_and_Price).png。
+
+④最后进行房价预测算法的套用实现，使用的是随机森林，代码为House_Price_Forecast.py和。用train_test_split来随机划分测试集训练集，用的是RandomForestRegressor，参数并没有进行特殊调整，数据也未进行相应处理。
